@@ -1,4 +1,4 @@
-const API_BASE = window.API_BASE || 'https://lorenzo-store-bcfmeygbezgzehew.westeurope-01.azurewebsites.net';
+const API_BASE = window.API_BASE || 'https://lorenzo-store-bcfmeygbezgzehew.spaincentral-01.azurewebsites.net';
 const PLACEHOLDER_IMG = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500"><rect fill="#EDE7D9" width="400" height="500"/><text fill="#8A8478" font-family="Georgia" font-size="16" text-anchor="middle" x="200" y="260">LORENZO</text></svg>');
 
 function attrEsc(s) {
