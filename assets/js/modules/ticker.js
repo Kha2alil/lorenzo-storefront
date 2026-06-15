@@ -30,11 +30,17 @@ function cycleTicker() {
   el.style.opacity = '0';
   setTimeout(() => {
     const m = Number(d.mins);
+    const hours = Math.floor(m / 60);
+    const days = Math.floor(hours / 24);
     const mins = m < 60
       ? t('ticker.min').replace('{n}', m)
       : m < 120
-        ? t('ticker.hour').replace('{n}', Math.floor(m / 60))
-        : t('ticker.hours').replace('{n}', Math.floor(m / 60));
+        ? t('ticker.hour').replace('{n}', hours)
+        : days < 1
+          ? t('ticker.hours').replace('{n}', hours)
+          : days < 2
+            ? t('ticker.day').replace('{n}', days)
+            : t('ticker.days').replace('{n}', days);
     el.innerHTML = t('ticker.order').replace('{name}', d.name).replace('{city}', d.city).replace('{product}', d.product).replace('{mins}', mins);
     el.style.opacity = '1';
   }, 300);

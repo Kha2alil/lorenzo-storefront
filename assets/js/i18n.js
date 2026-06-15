@@ -232,6 +232,8 @@ const LANG = {
     'ticker.min': '{n} min ago',
     'ticker.hour': '{n} hour ago',
     'ticker.hours': '{n} hours ago',
+    'ticker.day': '{n} day ago',
+    'ticker.days': '{n} days ago',
     // Page
     'page.title': 'LORENZO — Italian Menswear | Premium Men\'s Fashion Algeria',
     // A11y / tooltips
@@ -486,6 +488,8 @@ const LANG = {
     'ticker.min': 'il y a {n} min',
     'ticker.hour': 'il y a {n} heure',
     'ticker.hours': 'il y a {n} heures',
+    'ticker.day': 'il y a {n} jour',
+    'ticker.days': 'il y a {n} jours',
     'page.title': 'LORENZO — Prêt-à-porter Italien | Mode Homme Premium Algérie',
     'skipLink': 'Passer au contenu principal',
     'logo.tagline': 'Prêt-à-porter Italien',
@@ -731,6 +735,8 @@ const LANG = {
     'ticker.min': 'منذ {n} دقيقة',
     'ticker.hour': 'منذ {n} ساعة',
     'ticker.hours': 'منذ {n} ساعات',
+    'ticker.day': 'منذ {n} يوم',
+    'ticker.days': 'منذ {n} أيام',
     'page.title': 'لورينزو — ملابس رجالية إيطالية | أزياء راقية للرجال في الجزائر',
     'skipLink': 'تخطى إلى المحتوى الرئيسي',
     'logo.tagline': 'ملابس رجالية إيطالية',
