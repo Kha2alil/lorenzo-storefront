@@ -60,6 +60,10 @@
 .product-price { font-size: 14px; font-weight: 400; }
 .product-price span { font-size: 9px; font-weight: 300; color: var(--warm-gray); }
 
+.out-of-stock-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 4; background: rgba(26,26,24,0.85); color: #F5F0E8; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 16px; border-radius: 4px; pointer-events: none; white-space: nowrap; }
+.product-card.out-of-stock { opacity: 0.7; }
+.product-card.out-of-stock .product-photo { filter: grayscale(0.6); }
+
 .shop-header { padding: 40px 24px 8px; }
 .shop-title { font-family: var(--font-display); font-size: clamp(32px,8vw,56px); font-weight: 300; line-height: 1.1; margin-bottom: 8px; }
 .shop-title em { font-style: italic; color: var(--warm-gray); }

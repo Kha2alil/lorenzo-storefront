@@ -88,6 +88,7 @@ const LANG = {
     'detail.nationwide': 'Nationwide',
     'detail.addtocart': 'Add to Cart —',
     'detail.ordernow': 'Order Now',
+    'detail.unavailable': 'Currently Unavailable',
     // Tracking
     'track.label': 'Order Status',
     'track.title1': 'Track Your',
@@ -351,6 +352,7 @@ const LANG = {
     'detail.nationwide': 'Partout en Algérie',
     'detail.addtocart': 'Ajouter au panier —',
     'detail.ordernow': 'Commander',
+    'detail.unavailable': 'Actuellement indisponible',
     'track.label': 'Suivi de commande',
     'track.title1': 'Suivez Votre',
     'track.title2': 'Commande',
@@ -595,6 +597,7 @@ const LANG = {
     'detail.nationwide': 'توصيل وطني',
     'detail.addtocart': 'أضف إلى السلة —',
     'detail.ordernow': 'اطلب الآن',
+    'detail.unavailable': 'غير متاح حالياً',
     'track.label': 'حالة الطلب',
     'track.title1': 'تتبع',
     'track.title2': 'طلبك',

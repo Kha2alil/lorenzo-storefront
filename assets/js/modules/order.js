@@ -157,8 +157,6 @@ function nextStep() {
   if (currentStep < 3) goToStep(currentStep + 1);
 }
 
-let lastOrderData = null;
-
 function renderReceipt(orderData) {
   const itemsEl = document.getElementById('receiptItems');
   itemsEl.innerHTML = orderData.items.map(item => `
@@ -240,8 +238,7 @@ async function submitOrder() {
     const result = await res.json();
     orderNumber = result.order_number;
 
-    lastOrderData = { ...payload, order_number: orderNumber };
-    renderReceipt(lastOrderData);
+    renderReceipt({ ...payload, order_number: orderNumber });
 
     closeOrderDrawer();
     document.body.style.overflow = '';
@@ -252,7 +249,7 @@ async function submitOrder() {
     updateCartBadges();
     renderCartItems();
   } catch (err) {
-    alert(err.message);
+    showCartToast(err.message);
   }
 }
 
@@ -268,5 +265,3 @@ function closeConfirmation() {
 function openWhatsApp() {
   window.open('https://wa.me/213XXXXXXXXX?text=' + encodeURIComponent(t('order.wa')), '_blank');
 }
-
-function el(id) { return document.getElementById(id); }

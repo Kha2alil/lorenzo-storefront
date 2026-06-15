@@ -1,10 +1,3 @@
-function normalizePhone(val) {
-  const digits = val.replace(/\D/g, '');
-  if (digits.startsWith('213')) return '+' + digits;
-  if (digits.startsWith('0')) return '+213' + digits.slice(1);
-  return '+213' + digits;
-}
-
 function renderOrderCard(order) {
   const statusMap = ['confirmed', 'shipped', 'delivered'];
   const statusLabels = [t('track.confirmed'), t('track.shipped'), t('track.delivered')];

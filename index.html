@@ -19,6 +19,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://lorenzo-store-bcfmeygbezgzehew.spaincentral-01.azurewebsites.net">
+<link rel="stylesheet" href="assets/css/base/variables.css">
+<link rel="stylesheet" href="assets/css/base/reset.css">
+<link rel="stylesheet" href="assets/css/base/animations.css">
+<link rel="stylesheet" href="assets/css/base/layout.css">
+<link rel="stylesheet" href="assets/css/components/nav.css">
+<link rel="stylesheet" href="assets/css/components/hero.css">
+<link rel="stylesheet" href="assets/css/components/buttons.css">
+<link rel="stylesheet" href="assets/css/components/products.css">
+<link rel="stylesheet" href="assets/css/components/cart.css">
+<link rel="stylesheet" href="assets/css/components/order.css">
+<link rel="stylesheet" href="assets/css/components/tracking.css">
+<link rel="stylesheet" href="assets/css/components/contact.css">
+<link rel="stylesheet" href="assets/css/components/confirmation.css">
+<link rel="stylesheet" href="assets/css/components/modals.css">
+<link rel="stylesheet" href="assets/css/components/slider.css">
+<link rel="stylesheet" href="assets/css/components/ticker.css">
+<link rel="stylesheet" href="assets/css/components/faq.css">
+<link rel="stylesheet" href="assets/css/components/footer.css">
+<link rel="stylesheet" href="assets/css/rtl.css">
 <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
@@ -263,6 +283,7 @@
       <p class="detail-cat" id="detailCategory"></p>
       <h1 class="detail-name" id="detailName"></h1>
       <p class="detail-price" id="detailPrice"></p>
+      <p class="detail-unavailable" id="detailUnavailable" style="display:none;color:var(--warm-gray);font-size:14px;font-weight:400;margin:0 0 12px"></p>
       <!-- COLOR -->
       <div class="color-label-row">
         <span class="color-label" data-i18n="detail.colors">Available Colors</span>
@@ -744,18 +765,18 @@
   </div>
 </footer>
 
-<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.js" defer></script>
 <script>window.API_BASE = window.API_BASE || 'https://lorenzo-store-bcfmeygbezgzehew.spaincentral-01.azurewebsites.net';</script>
-<script src="assets/js/data/products.js"></script>
-<script src="assets/js/modules/ticker.js"></script>
-<script src="assets/js/modules/cart.js"></script>
-<script src="assets/js/modules/shop.js"></script>
-<script src="assets/js/modules/order.js"></script>
-<script src="assets/js/modules/tracking.js"></script>
-<script src="assets/js/modules/navigation.js"></script>
-<script src="assets/js/modules/product.js"></script>
-<script src="assets/js/modules/sliders.js"></script>
-<script src="assets/js/modules/contact.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/data/products.js" defer></script>
+<script src="assets/js/modules/ticker.js" defer></script>
+<script src="assets/js/modules/cart.js" defer></script>
+<script src="assets/js/modules/shop.js" defer></script>
+<script src="assets/js/modules/order.js" defer></script>
+<script src="assets/js/modules/tracking.js" defer></script>
+<script src="assets/js/modules/navigation.js" defer></script>
+<script src="assets/js/modules/product.js" defer></script>
+<script src="assets/js/modules/sliders.js" defer></script>
+<script src="assets/js/modules/contact.js" defer></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

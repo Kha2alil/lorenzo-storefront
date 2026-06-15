@@ -23,6 +23,10 @@ function updateCartBadges() {
 function addToCart(slug, size, color, colorHex) {
   const p = products[slug];
   if (!p) return;
+  if (!p.isActive) {
+    showCartToast(t('detail.unavailable'));
+    return;
+  }
   color = color || selectedColor || '';
   colorHex = colorHex || selectedColorHex || '';
   const galleryImg = document.getElementById('galleryMainImg');

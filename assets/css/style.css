@@ -1,22 +1,4 @@
-@import url('base/variables.css');
-@import url('base/reset.css');
-@import url('base/animations.css');
-@import url('base/layout.css');
-@import url('components/nav.css');
-@import url('components/hero.css');
-@import url('components/buttons.css');
-@import url('components/products.css');
-@import url('components/cart.css');
-@import url('components/order.css');
-@import url('components/tracking.css');
-@import url('components/contact.css');
-@import url('components/confirmation.css');
-@import url('components/modals.css');
-@import url('components/slider.css');
-@import url('components/ticker.css');
-@import url('components/faq.css');
-@import url('components/footer.css');
-@import url('rtl.css');
+/* style.css is kept only for styles that don't belong in component files */
 
 @media (min-width: 768px) {
     body { padding-bottom: 0; }

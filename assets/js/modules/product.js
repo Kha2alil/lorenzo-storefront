@@ -11,17 +11,51 @@ function openProduct(slug) {
 
   document.getElementById('detailCategory').textContent = currentProduct.category;
   document.getElementById('detailName').innerHTML = currentProduct.displayName.replace(/(\S+)\s*$/, '<em>$1</em>');
-  if (currentProduct.promotion) {
-    const endDateStr = currentProduct.promotion.end_date
-      ? '<span class="promo-end"> \u00b7 Sale ends ' + new Date(currentProduct.promotion.end_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) + '</span>'
-      : '';
-    document.getElementById('detailPrice').innerHTML = '<span class="price-original">' + currentProduct.price.toLocaleString('fr-DZ') + '</span> <span class="price-sale">' + currentProduct.discountedPrice.toLocaleString('fr-DZ') + ' <span>DZD</span></span>' + endDateStr;
-    document.getElementById('detailCartPrice').innerHTML = '<span class="price-original">' + currentProduct.price.toLocaleString('fr-DZ') + '</span> ' + currentProduct.discountedPrice.toLocaleString('fr-DZ') + ' DZD';
+
+  const unavailableEl = document.getElementById('detailUnavailable');
+  const detailPriceEl = document.getElementById('detailPrice');
+  const colorLabelRow = document.querySelector('#page-product .color-label-row');
+  const colorSwatches = document.getElementById('colorSwatches');
+  const sizeLabelRow = document.querySelector('#page-product .size-label-row');
+  const sizeGrid = document.getElementById('sizeGrid');
+  const addToCartBtn = document.querySelector('.detail-add-cart-btn');
+  const stickySizeSelect = document.getElementById('stickySizeSelect');
+  const stickyOrderBtn = document.getElementById('stickyOrderBtnDirect');
+
+  if (!currentProduct.isActive) {
+    unavailableEl.style.display = 'block';
+    unavailableEl.textContent = t('detail.unavailable');
+    detailPriceEl.innerHTML = '';
+    document.getElementById('detailCartPrice').innerHTML = '';
+    colorLabelRow.style.display = 'none';
+    colorSwatches.style.display = 'none';
+    sizeLabelRow.style.display = 'none';
+    sizeGrid.style.display = 'none';
+    addToCartBtn.style.display = 'none';
+    stickySizeSelect.style.display = 'none';
+    stickyOrderBtn.textContent = t('detail.unavailable');
+    stickyOrderBtn.disabled = true;
   } else {
-    document.getElementById('detailPrice').innerHTML = currentProduct.price.toLocaleString('fr-DZ') + ' <span>DZD</span>';
-    document.getElementById('detailCartPrice').textContent = currentProduct.price.toLocaleString('fr-DZ') + ' DZD';
+    unavailableEl.style.display = 'none';
+    colorLabelRow.style.display = '';
+    colorSwatches.style.display = '';
+    sizeLabelRow.style.display = '';
+    sizeGrid.style.display = '';
+    addToCartBtn.style.display = '';
+    stickySizeSelect.style.display = '';
+    stickyOrderBtn.disabled = false;
+    if (currentProduct.promotion) {
+      const endDateStr = currentProduct.promotion.end_date
+        ? '<span class="promo-end"> \u00b7 Sale ends ' + new Date(currentProduct.promotion.end_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) + '</span>'
+        : '';
+      detailPriceEl.innerHTML = '<span class="price-original">' + currentProduct.price.toLocaleString('fr-DZ') + '</span> <span class="price-sale">' + currentProduct.discountedPrice.toLocaleString('fr-DZ') + ' <span>DZD</span></span>' + endDateStr;
+      document.getElementById('detailCartPrice').innerHTML = '<span class="price-original">' + currentProduct.price.toLocaleString('fr-DZ') + '</span> ' + currentProduct.discountedPrice.toLocaleString('fr-DZ') + ' DZD';
+    } else {
+      detailPriceEl.innerHTML = currentProduct.price.toLocaleString('fr-DZ') + ' <span>DZD</span>';
+      document.getElementById('detailCartPrice').textContent = currentProduct.price.toLocaleString('fr-DZ') + ' DZD';
+    }
+    stickyOrderBtn.textContent = t('sticky.ordernow') + ' \u2014 ' + (currentProduct.promotion ? currentProduct.discountedPrice : currentProduct.price).toLocaleString('fr-DZ') + ' DZD';
   }
-  document.getElementById('stickyOrderBtnDirect').textContent = t('sticky.ordernow') + ' \u2014 ' + (currentProduct.promotion ? currentProduct.discountedPrice : currentProduct.price).toLocaleString('fr-DZ') + ' DZD';
   document.getElementById('detailDesc').textContent = currentProduct.desc;
 
   const allImages = currentProduct.allImages || [currentProduct.img];
@@ -37,8 +71,6 @@ function openProduct(slug) {
       <img src="${url}" alt="${currentProduct.name}" loading="lazy" onload="this.classList.add('loaded')">
     </div>`).join('');
   document.getElementById('galleryCounter').textContent = '1 / ' + allImages.length;
-  document.getElementById('stickyOrderBtnDirect').textContent = t('sticky.ordernow') + ` \u2014 ${currentProduct.price.toLocaleString('fr-DZ')} DZD`;
-
   renderSizeGrid();
   renderStickySizes();
   selectedColor = null;
@@ -47,6 +79,25 @@ function openProduct(slug) {
   fetch(API_BASE + '/api/products/' + slug).then(r => r.json()).then(detail => {
     if (currentProductSlug !== slug) return;
     if (detail) {
+      if (detail.is_active !== undefined && detail.is_active !== currentProduct.isActive) {
+        currentProduct.isActive = detail.is_active;
+        if (!currentProduct.isActive) {
+          unavailableEl.style.display = 'block';
+          unavailableEl.textContent = t('detail.unavailable');
+          detailPriceEl.innerHTML = '';
+          document.getElementById('detailCartPrice').innerHTML = '';
+          colorLabelRow.style.display = 'none';
+          colorSwatches.style.display = 'none';
+          sizeLabelRow.style.display = 'none';
+          sizeGrid.style.display = 'none';
+          addToCartBtn.style.display = 'none';
+          stickySizeSelect.style.display = 'none';
+          stickyOrderBtn.textContent = t('detail.unavailable');
+          stickyOrderBtn.disabled = true;
+          return;
+        }
+      }
+      if (detail.is_active === false) return;
       if (detail.unavailable_sizes) currentProduct.unavailableSizes = detail.unavailable_sizes;
       if (detail.promotion) currentProduct.promotion = detail.promotion;
       renderSizeGrid();

@@ -1,5 +1,3 @@
-const TICKER_VALUES = [];
-
 let tickerOrders = [];
 let tickerIndex = 0;
 

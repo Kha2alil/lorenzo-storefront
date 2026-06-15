@@ -23,8 +23,6 @@
     animation: heroZoom 12s var(--ease) forwards;
     filter: brightness(0.45);
 }
-.hero-bg-video.active { display: block; }
-.hero-bg-img.hidden { opacity: 0; pointer-events: none; }
 
 .hero-overlay {
     position: absolute; inset: 0;

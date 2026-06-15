@@ -1,9 +1,6 @@
-let currentFilter = 'all';
-
 function filterShop(chip, category) {
   document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
   chip.classList.add('active');
-  currentFilter = category;
   renderShopGrid(category === 'all' ? null : category);
   setTimeout(initReveal, 50);
 }
@@ -43,8 +40,8 @@ async function loadCategories() {
   try {
     const res = await fetch(API_BASE + '/api/products/categories');
     if (!res.ok) { console.error('Categories fetch failed:', res.status); return; }
-    const cats = await res.json();
-    if (!cats || !cats.length) { console.log('No categories returned from API'); return; }
+      const { data: cats, error } = await res.json();
+    if (error || !cats || !cats.length) { console.warn('No categories returned from API'); return; }
     const container = document.getElementById('shopFilters');
     if (!container) return;
     cats.forEach(c => {

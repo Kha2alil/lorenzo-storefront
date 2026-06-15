@@ -50,18 +50,3 @@
 @media (max-width: 767px) {
     .slider-btn { display: flex; }
 }
-
-.slider-dots {
-    display: flex; justify-content: center; gap: 6px;
-    padding: 14px 0 0;
-}
-.slider-dot-item {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--ivory-dark); cursor: pointer;
-    transition: background 0.25s, transform 0.25s;
-    border: none; padding: 0;
-}
-.slider-dot-item.active {
-    background: var(--gold);
-    transform: scale(1.3);
-}
